@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -22,9 +23,9 @@ public Etudiant addEtudiant(Etudiant etudiant) {
 	}
 
 
-public List<Etudiant> getAllEtudiant(int page, int size) {
-	Pageable Pages =PageRequest.of(page, size);
-	return etudiantRepository.findAll(Pages).getContent();
+public List<Etudiant> getAllEtudiants(int page, int size, String field) {
+	Pageable pages =PageRequest.of(page, size,Sort.by("nom").descending());
+	return etudiantRepository.findAll(pages).getContent();
 }
 
 
