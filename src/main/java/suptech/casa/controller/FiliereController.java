@@ -1,5 +1,6 @@
 package suptech.casa.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,5 +37,19 @@ public class FiliereController {
 			etudiant.setFiliere(filiere);
 			return etudiantService.addEtudiant(etudiant);
 		}
-	
+
+		//Supprimer une filière
+		@DeleteMapping ("filieres/{id}")
+		public boolean deleteFilieresById(@PathVariable Long id) {
+			
+			return filiereService.deleteFiliereById(id);
+			
+		
+		
+		
+		
+		
+		
+		}
+		
 }

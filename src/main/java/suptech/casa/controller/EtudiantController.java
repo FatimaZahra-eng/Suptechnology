@@ -2,6 +2,7 @@ package suptech.casa.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +20,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 @AllArgsConstructor
 public class EtudiantController {
 final EtudiantService etudiantService;
-	@GetMapping("etudiants")
-	public List <Etudiant> getAllEtudiants() {
-		return etudiantService.getAllEtudiant();
+	@GetMapping("etudiants/{page}/{size}")
+	public List <Etudiant> getAllEtudiantsPages(@PathVariable int page,@PathVariable int size) {
+		return etudiantService.getAllEtudiant (page, size );
 	}
+	
 	//Ajouter un nouvel étudiant
 	@PostMapping("etudiants")
 	public Etudiant addEtudiant(@RequestBody Etudiant etudiant) {
